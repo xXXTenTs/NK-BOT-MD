@@ -1,4 +1,5 @@
 import { sticker } from '../lib/sticker.js'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, command }) => {
 	let name = await conn.getName(m.sender)
