@@ -4,6 +4,7 @@
 let handler = async (m, { conn, args }) => {
 try {
 let dtcov = await fetchJson(`https://latam-api.vercel.app/api/covid19?apikey=${MyApiKey}&q=${args[0] ? args[0] : "world"}`)
+if (!dtcov.casos) return m.reply(`[ ! ] Sin resultados`)
 conn.sendMessage(m.chat, { text: `[ COVID-19 ]
 
 🌁 Lugar: ${args[0] ? args[0] : "Mundo"}
