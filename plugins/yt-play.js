@@ -21,8 +21,8 @@ try {
 
 
 _Enviando audio, espere..._
-`.trim(), contextInfo:{"externalAdReply":{"title": `${myapidl.titulo}`,"body": `⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ytthumb,"sourceUrl": 'https://youtube.com/channel/UC_Pp8pT9vbT15k5_-i6oseA?sub_confirmation=1' }}}, {quoted: m })
-conn.sendMessage(m.chat, { audio: { url: myapidl.descarga }, mimetype: 'audio/mp4', fileName: `${myapidl.titulo}.mp3` }, { quoted: m }).catch(e => {m.reply(`Ocurrio un error, por favor use el comando:\n\n${Prefijo}audio ${text}\n`)})
+`.trim()}, {quoted: m })
+conn.sendMessage(m.chat, { audio: { url: myapidl.descarga }, mimetype: 'audio/mp4', fileName: `${myapidl.titulo}.mp3`, contextInfo:{"externalAdReply":{"title": `${myapidl.titulo}`,"body": `⇆ㅤㅤ◁ㅤㅤ❚❚ㅤㅤ▷ㅤㅤ↻`,"previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": ytthumb,"sourceUrl": 'https://youtube.com/channel/UC_Pp8pT9vbT15k5_-i6oseA?sub_confirmation=1' }} }, { quoted: m }).catch(e => {m.reply(`Ocurrio un error, por favor use el comando:\n\n${Prefijo}audio ${text}\n`)})
 } catch (e) {
 m.reply(MultiNK.Error0())
 }
@@ -31,6 +31,6 @@ m.reply(MultiNK.Error0())
 handler.help = ['play <texto>']
 handler.tags = ['servicio']
 handler.command = /^play$/i
-//handler.limit = true
+//handler.limit = false  
 
 export default handler
