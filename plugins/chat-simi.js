@@ -12,5 +12,6 @@ m.reply(`No hay sistema!`)
 handler.help = ['simi'].map(v => v + ' <texto>')
 handler.tags = ['']
 handler.command = /^(simi|bot)$/i
+handler.limit = true
 
 export default handler
