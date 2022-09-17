@@ -7,12 +7,11 @@ let handler = async (m, { conn, args }) => {
 	let mcarga = m.reply(MultiNK.Proces(name))
 	await mcarga 
 	try {
-		let q = '128kbps'
-		let v = args[0]
-		const yt = await youtubedl(v).catch(async () => await youtubedlv2(v)).catch(async () => await youtubedlv3(v))
-		const dl_url = await yt.audio[q].download()
+		const yt = await youtubedl(args[0]).catch(async () => await youtubedlv2(args[0])).catch(async () => await youtubedlv3(args[0]))
+		const dl_url = await yt.audio['128kbps'].download()
 		const titulodl = await yt.title
-		const size = await yt.audio[q].fileSizeH
+		const size = await yt.audio['128kbps'].fileSizeH
+		if (size.split('MB')[0] >= 15.00) return m.reply('[ ! ] Tu wea pesa demasiado, sorry mi king no podre enviarlo :v')
 		conn.sendMessage(m.chat, { audio: { url: dl_url }, contextInfo:{"externalAdReply":{"title": `${titulodl}`,"body": `${NombreDelBot} 🔥`,"previewType": "PHOTO","thumbnailUrl": yt.thumbnail,"thumbnail": ``,"sourceUrl": `${dl_url}`}}, mimetype: 'audio/mp4', fileName: `${titulodl}.mp3` }, { quoted: m })
 		} catch {
 			await conn.reply(m.chat, MultiNK.Error1(), m)
