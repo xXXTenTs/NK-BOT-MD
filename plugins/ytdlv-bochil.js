@@ -14,6 +14,7 @@ let handler = async (m, { conn, args }) => {
 		const dl_url = await yt.video[q].download()
 		const titulodl = await yt.title
 		const size = await yt.video[q].fileSizeH 
+		if (size.split('MB')[0] >= 50.00) return m.reply('[ ! ] Tu wea pesa demasiado, sorry mi king no podre enviarlo :v')
 		conn.sendMessage(m.chat, { video: {url: dl_url}, fileName: `${titulodl}.mp4`, mimetype: 'video/mp4', caption: `Titulo: ${titulodl}\nTamaño: ${size}\nExtencion: .mp4`}, { quoted: m }) 
 		} catch {
 			await conn.reply(m.chat, MultiNK.Error1(), m)
