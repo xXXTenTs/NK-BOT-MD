@@ -83,6 +83,7 @@ let handler = async (m, { conn, args, command, text }) => {
 handler.help = ['voz <lenguaje> <texto>']
 handler.tags = ['herramienta']
 handler.command = /^(voz|gtts|tts|vos)$/i
+handler.limit = true
 
 export default handler
 
