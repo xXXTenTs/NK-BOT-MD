@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import { format } from 'util'
 
-let handler = async (m, { text }) => {
+let handler = async (m, { text, conn }) => {
 	if (!/^https?:\/\//.test(text)) return m.reply('El parámetro *URL* debe comenzar con http:// ó https:// -.-')
 	let name = await conn.getName(m.sender)
 	let mcarga = m.reply(MultiNK.Proces(name))
