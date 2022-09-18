@@ -2,7 +2,8 @@ import db from '../lib/database.js'
 
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})( [0-9]{1,3})?/i
 
-let handler = async (m, { conn, text, isOwner }) => {
+let handler = async (m, { conn, text, isOwner, args }) => {
+    if (!args[0]) return m.reply(`Y el enlace de WhatsApp?`)
     let [_, code, expired] = text.match(linkRegex) || []
     if (!code) return m.reply('[ ! ] Error, El enlace no funciona o es inválido')
     let gpData = await conn.groupGetInviteInfo(code).catch(e => {})
