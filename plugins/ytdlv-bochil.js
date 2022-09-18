@@ -2,7 +2,7 @@ import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
 
 let handler = async (m, { conn, args }) => {
 	if (!args[0]) return m.reply(`Que desea descargar de Youtube?, Ejemplo de uso: \n\n${Prefijo + command} https://youtu.be/ed-6VSF-GGc`)
-	if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply('*[ ! ] Link inválido*\n_Por favor, use un link de YouTube_\n')
+	if(!isUrl(args[0]) && !args[0].includes('youtu')) return m.reply('*[ ! ] Link inválido*\n_Por favor, use un link de YouTube_\n')
 	let name = await conn.getName(m.sender)
 	let mcarga = m.reply(MultiNK.Proces(name))
 	await mcarga 
