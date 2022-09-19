@@ -2,7 +2,7 @@
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
 let handler = async (m, { conn, command, text }) => {
-	if (!text) return m.reply(`Que desea buscar en Youtube?, Ejemplo de uso: \n\n${Prefijo + command} ideas en 5 minutos`)
+	if (!text) return m.reply(`Que desea buscar en Youtube?, Ejemplo de uso: \n\n${Prefijo + command} ideas en 5 minutos :v`)
 	let name = await conn.getName(m.sender)
 	let mcarga = m.reply(MultiNK.Bsqd(name))
 	await mcarga
@@ -11,6 +11,7 @@ try {
 	let busqueda = await fetchJson(`https://latam-api.vercel.app/api/yts?apikey=${MyApiKey}&q=${playtext}`)
 	let mynum = pickRandom([0, 1, 2])
 	let datayt = busqueda.resultados[mynum]
+	if (datayt.duracion_s >= 1800) return m.reply('[ ! ] Sin resultados, vuelva a intentarlo...')
 	let nextbut = [{buttonId: `${Prefijo}ytmp3 ${datayt.url}`, buttonText: {displayText: "[ AUDIO MP3 🔊 ]"}, type: 1}, 
 	{buttonId: `${Prefijo}ytmp4 ${datayt.url}`, buttonText: {displayText: "[ VIDEO MP4 🎞️ ]"}, type: 1}]
 	let playboton = {
@@ -35,7 +36,7 @@ m.reply(MultiNK.Error0())
 }
 }
 
-handler.help = ['play2 <texto>']
+handler.help = ['play2 <busqueda>']
 handler.tags = ['busqueda']
 handler.command = /^(play2)$/i
 handler.limit = true
