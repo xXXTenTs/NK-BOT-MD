@@ -3,7 +3,8 @@
 **/
 import * as fs from 'fs'
 
-let handler = async (m, { conn, text }) => {
+let handler = async (m, { conn, text, args }) => {
+	if (!args[0]) return m.reply(`Que desea buscar en pinterest?`)
 	let name = await conn.getName(m.sender)
 	let enc = encodeURIComponent(text)
     const msj = m.reply(MultiNK.Bsqd(name))
