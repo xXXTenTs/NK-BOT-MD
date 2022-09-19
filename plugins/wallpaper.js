@@ -3,7 +3,8 @@
 **/
 import * as fs from 'fs'
 
-let handler = async (m, { conn, text, command }) => {
+let handler = async (m, { conn, text, command, args }) => {
+        if (!args[0]) return m.reply(`Cual es su búsqueda?`)
 	let etiqueta = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 	let name = await conn.getName(m.sender)
 	let enc = encodeURIComponent(text)
