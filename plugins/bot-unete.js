@@ -7,7 +7,7 @@ let handler = async (m, { conn, text, isOwner, args }) => {
     let [_, code, expired] = text.match(linkRegex) || []
     if (!code) return m.reply('[ ! ] Error, El enlace no funciona o es inválido')
     let gpData = await conn.groupGetInviteInfo(code).catch(e => {})
-    let minUs = gpData.participants.length
+    let minUs = gpData.size
     if (minUs <= MinimoDeUsuarios) return m.reply(`[ ! ] La cantidad mínima para unirme al grupo debe ser de *${MinimoDeUsuarios}* participantes`)
     let res = await conn.groupAcceptInvite(code)
     expired = Math.floor(Math.min(999, Math.max(1, isOwner ? isNumber(expired) ? parseInt(expired) : 0 : 3)))
