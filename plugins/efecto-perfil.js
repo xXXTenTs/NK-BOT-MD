@@ -7,10 +7,10 @@ let handler = async (m, { conn, command }) => {
 	let mcarga = m.reply(MultiNK.Proces(name))
 	await mcarga
 try {
-    let encUrl = encodeURIComponent(await conn.profilePictureUrl(m.sender, 'image').catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'))
+    let encUrl = encodeURIComponent(await conn.profilePictureUrl(etiqueta, 'image').catch(_ => 'https://i.ibb.co/jhQ7gL0/Sin-Perfil-F.jpg'))
     let img = 'https://some-random-api.ml/canvas/'+command+'?avatar='+encUrl
     conn.sendMessage(m.chat, { image: {url: img}, caption: `*┏━> Efecto de perfil* : _${command}_
-*┗> Solicitado por* : _@${etiqueta.replace(/@.+/, '')}_`, mentions: [etiqueta] }, { quoted: m })
+*┗> Solicitud* : _@${etiqueta.replace(/@.+/, '')}_`, mentions: [etiqueta] }, { quoted: m })
 } catch (e) {
 m.reply(MultiNK.Error0())
 }
