@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args }) => { 
+let handler = async (m, { conn, args, command }) => { 
 	let regex = /(?:https?|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
 	if (!args[0]) return m.reply(`Por favor use una URL de github, ejemplo:\n${prefix + command} https://github.com/NeKosmic/NK-BOT-MD`)
 	if (!regex.test(args[0])) return reply('[ ! ] URL inválido')
