@@ -19,7 +19,8 @@ m.reply(MultiNK.Error0())
 handler.help = ['lolice', 'gay', 'triggered']
 handler.tags = ['fabricar']
 
-handler.command = /^(lolice)|(gay)|(triggered)$/i
+handler.command = /^(lolice|gay|triggered)$/i
 handler.limit = true
 
 export default handler
+
