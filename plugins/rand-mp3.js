@@ -1,23 +1,4 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-import { toAudio } from '../lib/converter.js'
-import * as fs from 'fs'
-
-let handler = async (m, { conn, usedPrefix, command, text }) => {
-	let name = await conn.getName(m.sender)
-	const msj = m.reply(MultiNK.Proces(name))
-	await msj
-try {
-let ranAudi = await fetchJson(`https://latam-api.vercel.app/api/rand_audio?apikey=${MyApiKey}`)
-conn.sendMessage(m.chat, {audio: {url: ranAudi.audio}, contextInfo:{"externalAdReply":{"title": `${name} 🎧`, mediaType: 2, "thumbnailUrl": 'https://github.com/NeKosmic/NK-BOT/raw/main/multimedia/imagenes/DjbotHD.jpg',"previewType": "VIDEO","mediaUrl": `https://youtu.be/Tk9Pitk1_oM`}}, fileName: `DjNK.mp3`, mimetype: 'audio/mpeg', ptt:true}, {quoted: m })
-} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['djbot']
-handler.tags = ['random']
-handler.command = /^(djbot)$/i
-
-export default handler
+import{toAudio as e}from"../lib/converter.js";import*as a from"fs";let handler=async(e,{conn:a,usedPrefix:t,command:r,text:i})=>{let l=await a.getName(e.sender),o=e.reply(MultiNK.Proces(l));await o;try{let m=await fetchJson(`https://latam-api.vercel.app/api/rand_audio?apikey=${MyApiKey}`);a.sendMessage(e.chat,{audio:{url:m.audio},contextInfo:{externalAdReply:{title:`${l} 🎧`,mediaType:2,thumbnailUrl:"https://github.com/NeKosmic/NK-BOT/raw/main/multimedia/imagenes/DjbotHD.jpg",previewType:"VIDEO",mediaUrl:"https://youtu.be/Tk9Pitk1_oM"}},fileName:"DjNK.mp3",mimetype:"audio/mpeg",ptt:!0},{quoted:e})}catch(p){e.reply(MultiNK.Error0())}};handler.help=["djbot"],handler.tags=["random"],handler.command=/^(djbot)$/i;export default handler;
