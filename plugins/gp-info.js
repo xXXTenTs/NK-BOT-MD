@@ -1,29 +1,16 @@
-let handler = async (m, { conn, participants, groupMetadata }) => {
-    let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || './multimedia/imagenes/avatar_contact.png'
-    let groupAdmins = participants.filter(p => p.admin)
-    let listAdmin = groupAdmins.map((v, i) => `${i + 1}. _@${v.id.split('@')[0]}_`).join('\n')
-    let owner = groupMetadata.owner || groupAdmins.find(p => p.admin === 'superadmin')?.id || m.chat.split`-`[0] + '@s.whatsapp.net'
-    let sumadmin = participants.filter(x => x.admin === 'admin').length + participants.filter(x => x.admin === 'superadmin').length
-    let more = String.fromCharCode(8206)
-    let masss = more.repeat(850)
-    let text = `
-*Nombre del grupo* : ${groupMetadata.subject}
-*Creado por* : _${'@'+owner.split('@')[0] ? '@'+owner.split('@')[0] : "[ ! ] Número del creador principal no encontrado"}_
-*Fecha de creación* : _${formatDate(groupMetadata.creation * 1000)}_
-*Total de participantes* : _${participants.length}_
-*Total de administradores* : _${sumadmin}_
-${listAdmin}
-*No administradores* : _${participants.filter(x => x.admin === null).length}_
-*ID del grupo* : _${groupMetadata.id}_
-*Descripción* : \n${masss}\n${groupMetadata.desc?.toString()}
-`.trim()
-    conn.sendFile(m.chat, pp, 'pp.jpg', text, m, false, { mentions: [...groupAdmins.map(v => v.id), owner] })
-}
-
-handler.help = ['gpinfo']
-handler.tags = ['casual']
-handler.command = /^(gpinfo|infogp|groupinfo)$/i
-
-handler.group = true
-
-export default handler
+/**
+[ By @NeKosmic || https://github.com/NeKosmic/ ]
+**/
+let handler=async(a,{conn:e,participants:i,groupMetadata:n})=>{let t=await e.profilePictureUrl(a.chat,"image").catch(a=>null)||"./multimedia/imagenes/avatar_contact.png",r=i.filter(a=>a.admin),l=r.map((a,e)=>`${e+1}. _@${a.id.split("@")[0]}_`).join("\n"),d=n.owner||r.find(a=>"superadmin"===a.admin)?.id||a.chat.split`-`[0]+"@s.whatsapp.net",p,o=`
+*Nombre del grupo* : ${n.subject}
+*Creado por* : _${d.split("@")[0],"@"+d.split("@")[0]}_
+*Fecha de creaci\xf3n* : _${formatDate(1e3*n.creation)}_
+*Total de participantes* : _${i.length}_
+*Total de administradores* : _${i.filter(a=>"admin"===a.admin).length+i.filter(a=>"superadmin"===a.admin).length}_
+${l}
+*No administradores* : _${i.filter(a=>null===a.admin).length}_
+*ID del grupo* : _${n.id}_
+*Descripci\xf3n* : 
+${"‎".repeat(850)}
+${n.desc?.toString()}
+`.trim();e.sendFile(a.chat,t,"pp.jpg",o,a,!1,{mentions:[...r.map(a=>a.id),d]})};handler.help=["gpinfo"],handler.tags=["casual"],handler.command=/^(gpinfo|infogp|groupinfo)$/i,handler.group=!0;export default handler;
