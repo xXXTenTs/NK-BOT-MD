@@ -7,4 +7,4 @@ _Ejemplo:_
 ${Prefijo+l} es gey?
 `);if(a.length<5)return e.reply("*[ ! ] El asunto es muy corto*");var r=[];t.map(async e=>{r.push(e.id.replace("c.us","s.whatsapp.net"))});let s=r[Math.floor(Math.random()*r.length)];await n.sendMessage(e.chat,{text:`
 👉 @${s.split("@")[0]}
-`,mentions:[s]},{ephemeralExpiration:86400,quoted:e}),reacMoji(e.chat,n,"\uD83E\uDD39‍♂️",e)};handler.help=["quien"],handler.tags=["games"],handler.command=/^(quien)$/i;export default handler;
+`,mentions:[s]},{ephemeralExpiration:86400,quoted:e}),reacMoji(e.chat,n,"\uD83E\uDD39‍♂️",e)};handler.help=["quien"],handler.tags=["games"],handler.command=/^(quien)$/i,handler.limit=!0;export default handler;
