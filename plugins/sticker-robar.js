@@ -1,50 +1,31 @@
-import { addExif } from '../lib/sticker.js'
-
-let handler = async (m, { conn, text, command }) => {
-  if (!m.quoted) return m.reply('Responda un sticker!')
-  let ascii = [`──────▄▀▄─────▄▀▄
+/**
+[ By @NeKosmic || https://github.com/NeKosmic/ ]
+**/
+import{addExif as e}from"../lib/sticker.js";let handler=async(r,{conn:t,text:a,command:n})=>{if(!r.quoted)return r.reply("Responda un sticker!");let l=[`──────▄▀▄─────▄▀▄
 ─────▄█░░▀▀▀▀▀░░█▄
 ─▄▄──█░░░░░░░░░░░█──▄▄
-█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█`, `───▄▄▄
+█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█`,`───▄▄▄
 ─▄▀░▄░▀▄
 ─█░█▄▀░█
 ─█░▀▄▄▀█▄█▄▀
-▄▄█▄▄▄▄███▀`, `──────▄▀─
+▄▄█▄▄▄▄███▀`,`──────▄▀─
 ─█▀▀▀█▀█─
 ──▀▄░▄▀──
 ────█────
-──▄▄█▄▄──`, `──────────▄
+──▄▄█▄▄──`,`──────────▄
 ────────▄██
 ─▄▀██▀█▀█▀███▀
 ▀▀▀▀▀████▀▀▀
-──────▀██`, `▀▀▀▀█▀▀▀▀
+──────▀██`,`▀▀▀▀█▀▀▀▀
 ─▄▀█▀▀█──────▄
 █▄▄█▄▄██████▀
 ▀▀█▀▀▀█▀▀
-─▀▀▀▀▀▀▀`, `───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
+─▀▀▀▀▀▀▀`,`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
 ───█▒▒░░░░░░░░░▒▒█───
 ────█░░█░░░░░█░░█────
 ─▄▄──█░░░▀█▀░░░█──▄▄─
-█░░█─▀▄░░░░░░░▄▀─█░░█`]
-  let stiker = false
-  try {
-    let [teks1, teks2] = text.split`|`
-    let mime = m.quoted.mimetype || ''
-    if (!/webp/.test(mime)) return m.reply(`Envie ó Responda un sticker con el comando ${Prefijo + command}`)
-    let img = await m.quoted.download()
-    if (!img) return m.reply('Responda un sticker!')
-    stiker = await addExif(img, teks1 || '', teks2 ? teks2 : teks1 ? '' : `\n- [ ${NombreDelBot} ] -\n\n\n${pickRandom(ascii)}`)
-  } catch (e) {
-    console.error(e)
-    if (Buffer.isBuffer(e)) stiker = e
-  } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '', m, false, { asSticker: true })
-    else throw '[!] La conversión falló'
-  }
-}
-handler.help = ['robar <paquete>|<autor>']
-handler.tags = ['herramienta']
-handler.command = /^(robar)$/i
-handler.limit = true
+█░░█─▀▄░░░░░░░▄▀─█░░█`],i=!1;try{let[o,d]=a.split`|`,s=r.quoted.mimetype||"";if(!/webp/.test(s))return r.reply(`Envie \xf3 Responda un sticker con el comando ${Prefijo+n}`);let p=await r.quoted.download();if(!p)return r.reply("Responda un sticker!");i=await e(p,o||"",d||(o?"":`
+- [ ${NombreDelBot} ] -
 
-export default handler
+
+${pickRandom(l)}`))}catch(c){console.error(c),Buffer.isBuffer(c)&&(i=c)}finally{if(i)t.sendFile(r.chat,i,"wm.webp","",r,!1,{asSticker:!0});else throw"[!] La conversi\xf3n fall\xf3"}};handler.help=["robar <paquete>|<autor>"],handler.tags=["herramienta"],handler.command=/^(robar)$/i,handler.limit=!0;export default handler;
