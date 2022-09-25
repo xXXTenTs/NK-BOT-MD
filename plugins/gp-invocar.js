@@ -1,17 +1,9 @@
-let handler = async (m, { conn, groupMetadata, text, participants, isAdmin, isOwner }) => {
-    let users = participants.map(u => u.id).filter(v => v !== conn.user.jid)
-    let etiqueta = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let more = String.fromCharCode(8206)
-    let masss = more.repeat(850)
-    await conn.sendMessage(m.chat, { text: `*[ ! ] Invocando a los integrantes del grupo* : ${groupMetadata.subject}\n*~> Invocador* : _@${etiqueta.replace(/@.+/, '')}_\n*~> Mensaje* : _${text ? text : 'No hay :v'}_\n${masss}\n╔═══ஜ۩۞۩ஜ═══╗\n` + users.map(v => '╠➥ @' + v.replace(/@.+/, '')).join`\n` + '\n╚═══════════\n', mentions: users }, {quoted: m }) 
-    reacMoji(m.chat, conn, '📢', m)
-}
-
-handler.help = ['invocar']
-handler.tags = ['grupos', 'admins']
-handler.command = /^(invocar|todos|tagall)$/i
-
-handler.admin = true
-handler.group = true
-
-export default handler
+/**
+[ By @NeKosmic || https://github.com/NeKosmic/ ]
+**/
+let handler=async(e,{conn:a,groupMetadata:n,text:r,participants:d,isAdmin:t,isOwner:l})=>{let o=d.map(e=>e.id).filter(e=>e!==a.user.jid);await a.sendMessage(e.chat,{text:`*[ ! ] Invocando a los integrantes del grupo* : ${n.subject}
+*~> Invocador* : _@${e.sender.replace(/@.+/,"")}_
+*~> Mensaje* : _${r||"No hay :v"}_
+${"‎".repeat(850)}
+╔═══ஜ۩۞۩ஜ═══╗
+`+o.map(e=>"╠➥ @"+e.replace(/@.+/,"")).join`\n`+"\n╚═══════════\n",mentions:o},{quoted:e}),reacMoji(e.chat,a,"\uD83D\uDCE2",e)};handler.help=["invocar"],handler.tags=["grupos","admins"],handler.command=/^(invocar|todos|tagall)$/i,handler.admin=!0,handler.group=!0;export default handler;
