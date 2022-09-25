@@ -22,11 +22,11 @@ let tags = {
   'busqueda': '_BUSQUEDA :_',
   'servicio': '_SERVICIOS :_',
   'xp': '_XP & LIMITE :_',
-  'game': '_RPG, JUEGOS :_',
+  'games': '_RPG, JUEGOS :_',
   'random': '_PASATIEMPO :_',
   '': '_OTROS :_'
 }
-let handler = async (m, { conn, usedPrefix: _p, __dirname, command }) => {
+let handler = async (m, { conn, usedPrefix: _p, __dirname, command, isPrems }) => {
 	try {
     let wimg = await fetch('https://pastebin.com/raw/GZ8d1qcT')
     let imgw = await conn.profilePictureUrl(m.sender, 'image').catch(_ => './multimedia/imagenes/avatar_contact.png')
@@ -53,7 +53,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, command }) => {
     }**/
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, limit, level, role } = db.data.users[m.sender]
+    let { exp, level, role } = db.data.users[m.sender]
+    let prem = isPrems?'Si':'No'
+    let limit = isPrems?'∞':db.data.users[m.sender].limit
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let uptime = timeString(process.uptime())
@@ -111,7 +113,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, command }) => {
       prop: global.Propietario,
       pref: ' '+global.Prefijo+' ',
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[ URL de github inválido ]',
-      level, limit, name, totalreg, rtotalreg, role,
+      level, name, totalreg, rtotalreg, role,
+      prem,
+      limit,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
@@ -136,9 +140,10 @@ const defaultMenu = {
 ║❂ Base de datos: %rtotalreg a %totalreg
 ║❂ Tiempo activo: %uptime
 ║❂ Version del bot: %version
-║❂ Dueño: %prop
+║❂ Dueño del bot: %prop
 ║❂ Prefijo único: 「 %pref 」
 ║❂ Cliente: %name
+║❂ Premium: %prem
 ║❂ Limite restante: %limit
 ║❂ Nivel: %level (%exp / %maxexp)
 ║❂ Rol: %role
