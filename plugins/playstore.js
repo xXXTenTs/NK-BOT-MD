@@ -1,34 +1,13 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-let handler = async (m, { conn, text, args }) => {
-	if (!args[0]) return m.reply(`Que desea buscar en playstore?`)
-	let name = await conn.getName(m.sender)
-	let enc = encodeURIComponent(text)
-    const msj = m.reply(MultiNK.Bsqd(name))
-	await msj
-try {
-let gPlay = await fetchJson(`https://latam-api.vercel.app/api/playstore?apikey=${MyApiKey}&q=${enc}`)
-if (!gPlay.titulo) return m.reply(`[ ! ] Sin resultados`)
-let trDesc = await traducIr(encodeURI(gPlay.descripcion))
-conn.sendMessage(m.chat,{image:{url: gPlay.imagen?gPlay.imagen:'https://github.com/NeKosmic/NK-BOT/raw/main/multimedia/imagenes/GplayHD.jpg'},caption:`🔍 Resultado: ${gPlay.titulo}
-🧬 Identificador: ${gPlay.id}
-⛓️ Link: ${gPlay.link}
-🖼️ Imagen: ${gPlay.imagen}
-✍️ Desarrollador: ${gPlay.desarrollador}
-📜 Descripcion: ${trDesc?trDesc:gPlay.descripcion}
-💲 Moneda: ${gPlay.moneda}
-🎭 Gratis: ${gPlay.gratis}
-💸 Precio: ${gPlay.precio}
-📈 Puntuacion: ${gPlay.puntuacion}`},{quoted:m})
-} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['playstore'].map(v => v + ' <busqueda>')
-handler.tags = ['busqueda']
-handler.command = /^(playstore)$/i
-handler.limit = true
-
-export default handler
+let handler=async(a,{conn:e,text:i,args:r})=>{if(!r[0])return a.reply("Que desea buscar en playstore?");let t=await e.getName(a.sender),l=encodeURIComponent(i),n=a.reply(MultiNK.Bsqd(t));await n;try{let o=await fetchJson(`https://latam-api.vercel.app/api/playstore?apikey=${MyApiKey}&q=${l}`);if(!o.titulo)return a.reply("[ ! ] Sin resultados");let s=await traducIr(encodeURI(o.descripcion));e.sendMessage(a.chat,{image:{url:o.imagen?o.imagen:"https://github.com/NeKosmic/NK-BOT/raw/main/multimedia/imagenes/GplayHD.jpg"},caption:`🔍 Resultado: ${o.titulo}
+🧬 Identificador: ${o.id}
+⛓️ Link: ${o.link}
+🖼️ Imagen: ${o.imagen}
+✍️ Desarrollador: ${o.desarrollador}
+📜 Descripcion: ${s||o.descripcion}
+💲 Moneda: ${o.moneda}
+🎭 Gratis: ${o.gratis}
+💸 Precio: ${o.precio}
+📈 Puntuacion: ${o.puntuacion}`},{quoted:a})}catch(d){a.reply(MultiNK.Error0())}};handler.help=["playstore"].map(a=>a+" <busqueda>"),handler.tags=["busqueda"],handler.command=/^(playstore)$/i,handler.limit=!0;export default handler;
