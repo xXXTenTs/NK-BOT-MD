@@ -1,26 +1,5 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-import * as fs from 'fs'
-
-let handler = async (m, { conn, text, args }) => {
-	if (!args[0]) return m.reply(`Que desea buscar en pinterest?`)
-	let name = await conn.getName(m.sender)
-	let enc = encodeURIComponent(text)
-    const msj = m.reply(MultiNK.Bsqd(name))
-	await msj
-try {
-let pin = await fetchJson(`https://latam-api.vercel.app/api/pinterest?apikey=${MyApiKey}&q=${enc}`)
-if (!pin.imagen) return m.reply(`[ ! ] Sin resultados`)
-conn.sendMessage(m.chat,{image:{url: pin.imagen},caption:`*[ PINTEREST-CHAN ] ✓*\n*~> Resultado para* : _${text}_`,mentions:[m.sender]},{quoted:{key:{fromMe:!1,"participant":"0@s.whatsapp.net","remoteJid":"51995386439-1604595598@g.us"},"message":{orderMessage:{itemCount:737,status:200,thumbnail:fs.readFileSync('./multimedia/imagenes/mylogo.jpg'),surface:200,message:`${name} => ${text}`,orderTitle:'Matt_M',sellerJid:'0@s.whatsapp.net'}}}})
-} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['pinterest'].map(v => v + ' <busqueda>')
-handler.tags = ['busqueda']
-handler.command = /^(pinterest)$/i
-handler.limit = true
-
-export default handler
+import*as e from"fs";let handler=async(a,{conn:t,text:r,args:s})=>{if(!s[0])return a.reply("Que desea buscar en pinterest?");let i=await t.getName(a.sender),n=encodeURIComponent(r),l=a.reply(MultiNK.Bsqd(i));await l;try{let p=await fetchJson(`https://latam-api.vercel.app/api/pinterest?apikey=${MyApiKey}&q=${n}`);if(!p.imagen)return a.reply("[ ! ] Sin resultados");t.sendMessage(a.chat,{image:{url:p.imagen},caption:`*[ PINTEREST-CHAN ] ✓*
+*~> Resultado para* : _${r}_`,mentions:[a.sender]},{quoted:{key:{fromMe:!1,participant:"0@s.whatsapp.net",remoteJid:"51995386439-1604595598@g.us"},message:{orderMessage:{itemCount:737,status:200,thumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),surface:200,message:`${i} => ${r}`,orderTitle:"Matt_M",sellerJid:"0@s.whatsapp.net"}}}})}catch(d){a.reply(MultiNK.Error0())}};handler.help=["pinterest"].map(e=>e+" <busqueda>"),handler.tags=["busqueda"],handler.command=/^(pinterest)$/i,handler.limit=!0;export default handler;
