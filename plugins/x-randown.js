@@ -1,43 +1,5 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-//https://docs-jojo.herokuapp.com
-let handler = async (m, { conn, command, args }) => {
-try {
-if (command == "comediante") {
-let xdnot = await fetchJson(`https://latam-api.vercel.app/api/comedia?apikey=${MyApiKey}`)
-conn.sendMessage(m.chat, { text: xdnot.risa_not_1, mentions: [m.sender] }, {quoted: {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "51995386439-1613049930@g.us" } : {})},message: {"videoMessage": { "title":null, "h": `UwU`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `Sinsentido :v`, 'jpegThumbnail': null}}} })
-setTimeout( () => {
-m.reply(xdnot.risa_not_2 ? xdnot.risa_not_2 : "Mucha comedia 🤡")
-}, 4000)
-} else if (command == "notif") {
-let Notif = await fetchJson(`https://latam-api.vercel.app/api/noti_rand?apikey=${MyApiKey}`)
-m.reply(Notif.notificacion)
-} else if (command == "tumama") {
-let Tumam = await fetchJson(`https://latam-api.vercel.app/api/tumama?apikey=${MyApiKey}`)
-m.reply(Tumam.respuesta)
-} else if (command == "consejo") {
-let rpt = await fetchJson(`https://latam-api.vercel.app/api/rand_aviso?apikey=${MyApiKey}`)
-m.reply(rpt.aviso)
-} else if (command == "minidatos") {
-let datin = await fetchJson(`https://docs-jojo.herokuapp.com/api/fakta-unik`, {method: 'get'})
-m.reply(await traducIr(datin.result))
-} else if (command == "fraseamor") {
-let simp = await fetchJson(`https://docs-jojo.herokuapp.com/api/katacinta`, {method: 'get'})
-m.reply(await traducIr(simp.result))
-}  else if (command == "minombre") {
-if (!args[0]) return m.reply('Y el nombre?')
-let asies = await fetchJson(`https://docs-jojo.herokuapp.com/api/artinama?nama=${args[0]}`, {method: 'get'})
-m.reply(await traducIr(asies.result))
-}
-} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['comediante', 'notif', 'tumama', 'consejo', 'minidatos', 'fraseamor', 'minombre']
-handler.tags = ['random']
-handler.command = /^(comediante)|(notif)|(tumama)|(consejo)|(minidatos)|(fraseamor)|(minombre)$/i
-handler.limit = true
-
-export default handler
+//Thanks https://docs-jojo.herokuapp.com
+let handler=async(a,{conn:e,command:t,args:i})=>{try{if("comediante"==t){let o=await fetchJson(`https://latam-api.vercel.app/api/comedia?apikey=${MyApiKey}`);e.sendMessage(a.chat,{text:o.risa_not_1,mentions:[a.sender]},{quoted:{key:{participant:"0@s.whatsapp.net",...a.chat?{remoteJid:"51995386439-1613049930@g.us"}:{}},message:{videoMessage:{title:null,h:"UwU",seconds:"359996400",gifPlayback:"true",caption:"Sinsentido :v",jpegThumbnail:null}}}}),setTimeout(()=>{a.reply(o.risa_not_2?o.risa_not_2:"Mucha comedia \uD83E\uDD21")},4e3)}else if("notif"==t){let p=await fetchJson(`https://latam-api.vercel.app/api/noti_rand?apikey=${MyApiKey}`);a.reply(p.notificacion)}else if("tumama"==t){let r=await fetchJson(`https://latam-api.vercel.app/api/tumama?apikey=${MyApiKey}`);a.reply(r.respuesta)}else if("consejo"==t){let s=await fetchJson(`https://latam-api.vercel.app/api/rand_aviso?apikey=${MyApiKey}`);a.reply(s.aviso)}else if("minidatos"==t){let l=await fetchJson("https://docs-jojo.herokuapp.com/api/fakta-unik",{method:"get"});a.reply(await traducIr(l.result))}else if("fraseamor"==t){let n=await fetchJson("https://docs-jojo.herokuapp.com/api/katacinta",{method:"get"});a.reply(await traducIr(n.result))}else if("minombre"==t){if(!i[0])return a.reply("Y el nombre?");let m=await fetchJson(`https://docs-jojo.herokuapp.com/api/artinama?nama=${i[0]}`,{method:"get"});a.reply(await traducIr(m.result))}}catch(c){a.reply(MultiNK.Error0())}};handler.help=["comediante","notif","tumama","consejo","minidatos","fraseamor","minombre"],handler.tags=["random"],handler.command=/^(comediante|notif|tumama|consejo|minidatos|fraseamor|minombre)$/i,handler.limit=!0;export default handler;
