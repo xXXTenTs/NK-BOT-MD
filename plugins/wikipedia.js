@@ -1,24 +1,7 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-let handler = async (m, { conn, text, args }) => {
-	if (!args[0]) return m.reply(`Cual es su búsqueda en Wikipedia?`)
-	let name = await conn.getName(m.sender)
-	let enc = encodeURIComponent(text)
-    const msj = m.reply(MultiNK.Bsqd(name))
-	await msj
-try {
-let res = await fetchJson(`https://latam-api.vercel.app/api/wikipedia?apikey=${MyApiKey}&q=${enc}`)
-if (!res.datos.wikinfo) return m.reply(`[ ! ] Sin resultados`)
-conn.sendMessage(m.chat,{image:{url: res.datos.miniatura},caption:`|| *WIKIPEDIA* ||\n_~> Resultados para : ${text}_\n${String.fromCharCode(8206).repeat(850)}\n${res.datos.wikinfo}`},{quoted:m})
-} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['wikipedia'].map(v => v + ' <busqueda>')
-handler.tags = ['busqueda']
-handler.command = /^(wikipedia)$/i
-handler.limit = true
-
-export default handler
+let handler=async(a,{conn:e,text:i,args:t})=>{if(!t[0])return a.reply(`Cual es su b\xfasqueda en Wikipedia?`);let r=await e.getName(a.sender),d=encodeURIComponent(i),l=a.reply(MultiNK.Bsqd(r));await l;try{let n=await fetchJson(`https://latam-api.vercel.app/api/wikipedia?apikey=${MyApiKey}&q=${d}`);if(!n.datos.wikinfo)return a.reply("[ ! ] Sin resultados");e.sendMessage(a.chat,{image:{url:n.datos.miniatura},caption:`|| *WIKIPEDIA* ||
+_~> Resultados para : ${i}_
+${"‎".repeat(850)}
+${n.datos.wikinfo}`},{quoted:a})}catch(p){a.reply(MultiNK.Error0())}};handler.help=["wikipedia"].map(a=>a+" <busqueda>"),handler.tags=["busqueda"],handler.command=/^(wikipedia)$/i,handler.limit=!0;export default handler;
