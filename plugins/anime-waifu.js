@@ -1,26 +1,5 @@
 /**
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
-import fetch from 'node-fetch'
-import * as fs from 'fs'
-
-let handler = async (m, { conn, command }) => {
-	let etiqueta = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-	let name = await conn.getName(m.sender)
-	const msj = m.reply(MultiNK.Proces(name))
-	await msj
-try {
-	let resimg = await fetch('https://latam-api.vercel.app/api/waifu?apikey='+MyApiKey)
-	let json = await resimg.json()
-	conn.sendMessage(m.chat, { image: {url: json.imagen}, caption: `┏━⊱ Imagen : ${command}\n┗⊱ Solicitada por : @${etiqueta.replace(/@.+/, '')}`, mentions: [etiqueta] }, { quoted: {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "51995386439-1604595598@g.us"}, "message": {orderMessage: {itemCount: 737,status: 200, thumbnail: fs.readFileSync('./multimedia/imagenes/mylogo.jpg'), surface: 200, message: `${name} [_>] ${command}`, orderTitle: 'Matt_M', sellerJid: '0@s.whatsapp.net'}}} })
-	} catch (e) {
-m.reply(MultiNK.Error0())
-}
-}
-
-handler.help = ['waifu']
-handler.tags = ['animeuwu']
-handler.command = /^(waifu)$/i
-handler.limit = true
-
-export default handler
+import e from"node-fetch";import*as a from"fs";let handler=async(t,{conn:i,command:r})=>{let n=t.mentionedJid&&t.mentionedJid[0]?t.mentionedJid[0]:t.fromMe?i.user.jid:t.sender,s=await i.getName(t.sender),m=t.reply(MultiNK.Proces(s));await m;try{let d=await (await e("https://latam-api.vercel.app/api/waifu?apikey="+MyApiKey)).json();i.sendMessage(t.chat,{image:{url:d.imagen},caption:`┏━⊱ Imagen : ${r}
+┗⊱ Solicitada por : @${n.replace(/@.+/,"")}`,mentions:[n]},{quoted:{key:{fromMe:!1,participant:"0@s.whatsapp.net",remoteJid:"51995386439-1604595598@g.us"},message:{orderMessage:{itemCount:737,status:200,thumbnail:a.readFileSync("./multimedia/imagenes/mylogo.jpg"),surface:200,message:`${s} [_>] ${r}`,orderTitle:"Matt_M",sellerJid:"0@s.whatsapp.net"}}}})}catch(l){t.reply(MultiNK.Error0())}};handler.help=["waifu"],handler.tags=["animeuwu"],handler.command=/^(waifu)$/i,handler.limit=!0;export default handler;
