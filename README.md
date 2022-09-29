@@ -24,6 +24,8 @@
 | Anti-Fakes|✔️|
 | Anti-Estranjeros|✔️|
 | Anti-Flood|✔️|
+| Anti-Llamadas|✔️|
+| Anti-Privados|✔️|
 | Modo Publico/Privado|✔️|
 | Herramientas de edición|✔️|
 | Anime|✔️|
