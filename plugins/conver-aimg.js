@@ -5,7 +5,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     if (!global.support.convert &&
         !global.support.magick &&
         !global.support.gm) return handler.disabled = false // Disable if doesnt support
-    if (!m.quoted) return m.reply(`*Respomda una imagen usando el comando* :\n\n${usedPrefix + command}\n`)
+    if (!m.quoted) return m.reply(`*Respomda una sticker usando el comando* :\n\n${usedPrefix + command}\n`)
     let q = m.quoted
     if (/sticker/.test(q.mediaType)) {
         let sticker = await q.download()
