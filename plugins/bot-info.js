@@ -14,7 +14,7 @@ ${P}
 ➪ *Grupos abandonados* : _${g.length-g.length}_
 ➪ *Chats personales* : _${h.length-g.length}_
 ➪ *Total de chats* : _${h.length}_
-➪ *Hits de hoy* : _${global.hit_cmd.length}_
+➪ *Hits en los últimos minutos* : _${global.hit_cmd.length}_
 ➪ *Version del bot* : _${BotVersion}_
 ➪ *Wa-web Api* : _https://github.com/adiwajshing/Baileys_
 ➪ *Sc - Github* : _https://github.com/NeKosmic/NK-BOT-MD_
