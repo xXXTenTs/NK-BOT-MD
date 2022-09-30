@@ -7,7 +7,7 @@ import e from"../lib/database.js";import{xpRange as a}from"../lib/levelling.js";
 ┣⊱ *Registrado* : ${m?"S\xed ("+new Date(c).toLocaleString()+")":"No"} ${d>0?"\n*⏱️ \xdaltimo reclamo:* "+new Date(d).toLocaleString():""}
 ┣⊱ *Nombre* : <${g}>
 ┣⊱ *XP conseguido asta el momento* : (${l-u} / ${v})
-┣⊱ *Su nivel actual es* : ${o} ${v<l-u?`<Ya puedes subir de nive, use el comando ${Prefijo}subirnivel >`:""}
+┣⊱ *Su nivel actual es* : ${o} ${v<l-u?`<Ya puedes subir de nivel, use el comando ${Prefijo}subirnivel >`:""}
 ┣⊱ *De acuerdo al nivel es* : ${s}
 ┣⊱ *Progreso de nivel* : ${b}
 ┗━━━━━━━━━━━━━
