@@ -64,6 +64,9 @@ if (!opts['test']) {
     /*Connection.store.writeToFile(Connection.storeFile)*/
   }, 60 * 1000)
 }
+
+setInterval(async () => { await clearTmp() }, 180000)
+
 if (opts['server']) (await import('./server.js')).default(conn, PORT)
 
 
