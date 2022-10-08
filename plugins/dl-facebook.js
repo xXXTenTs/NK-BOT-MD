@@ -2,6 +2,7 @@
 [ By @NeKosmic || https://github.com/NeKosmic/ ]
 **/
 let handler = async (m, { conn, command, args }) => {
+	if (!args[0]) return m.reply('Link?')
 	if (!isUrl(args[0])) return m.reply('*[ ! ] Por favor use un Link*')
 	if (!args[0].match(/www.facebook.com|fb.watch/g)) return m.reply('*[ ! ] Link inválido*\n_Por favor, use un link de Facebook_\n')
 	let name = await conn.getName(m.sender)
