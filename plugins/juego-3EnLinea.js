@@ -60,5 +60,6 @@ ${arr.slice(6).join('')}
 handler.help = ['ttt'].map(v => v + ' [nombre de sala]')
 handler.tags = ['games']
 handler.command = /^(ttt)$/
+handler.group = true
 
 export default handler
