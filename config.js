@@ -13,9 +13,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname)
 const dPkg = require(join(__dirname, './package.json'))
 //
-global.MultiNK = es; //Lenguaje nativo
+global.MultiNK = eng; //Lenguaje nativo
 global.Propietario = dPkg.author.name
-global.OwnerNum = '51995386439'
+global.OwnerNum = '84355614026'
 global.PaisPrefix = '51'
 global.Prefijo = '.'
 global.MyApiKey = 'nekosmic' //zzz
